@@ -5,7 +5,7 @@ function ArticleList({ articles }) {
     return (
         <div className={articleStyles.grid}>
             {articles.map((el) => (
-                <ArticleItem article={el} key={Math.random}/>
+                <ArticleItem article={el} key={Math.random()}/>
             ))}
         </div>
     );
