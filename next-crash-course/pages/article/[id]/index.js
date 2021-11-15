@@ -18,35 +18,9 @@ const article = ({article}) => {
     )
 }
 
-// "context allows us to grab the params from the url"
-export const getStaticProps = async (context) => {
-    const res = await fetch(`${server}/api/articles/${context.params.id}`);
-    const article = await res.json();
-
-    return {
-        props: {
-            article: article
-        }
-    }
-}
-
-export const getStaticPaths = async () => {
-    const res = await fetch(`${server}/api/articles`);
-    const articles = await res.json();
-
-    const ids = articles.map(article => article.id)
-    const paths = ids.map(id => ({params: {id: id.toString()}}))
-
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-
 // // "context allows us to grab the params from the url"
 // export const getStaticProps = async (context) => {
-//     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`);
+//     const res = await fetch(`${server}/api/articles/${context.params.id}`);
 //     const article = await res.json();
 
 //     return {
@@ -57,7 +31,7 @@ export const getStaticPaths = async () => {
 // }
 
 // export const getStaticPaths = async () => {
-//     const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+//     const res = await fetch(`${server}/api/articles`);
 //     const articles = await res.json();
 
 //     const ids = articles.map(article => article.id)
@@ -68,6 +42,32 @@ export const getStaticPaths = async () => {
 //         fallback: false
 //     }
 // }
+
+
+// "context allows us to grab the params from the url"
+export const getStaticProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`);
+    const article = await res.json();
+
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+    const articles = await res.json();
+
+    const ids = articles.map(article => article.id)
+    const paths = ids.map(id => ({params: {id: id.toString()}}))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
 
 
 
