@@ -6,8 +6,17 @@ import {useState} from "react";
 import { promises as fs } from 'fs'
 import path from 'path'
 
+import useSWR from 'swr';
+
 export default function Home({articles, files}) {
-  console.log(files)
+
+  // useSWR for client side data fetching
+  const fetcher = (url) => fetch(url).then((res) => res.json())
+
+  const { data:pokemon, error } = useSWR('https://pokeapi.co/api/v2/pokemon/ditto', fetcher)
+
+  console.log(pokemon.species.name)
+  //
 
   const test = async () => {
       const res = await fetch(`https://api.monday.com/v2`, {
