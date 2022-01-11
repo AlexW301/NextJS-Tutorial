@@ -15,7 +15,7 @@ export default function Home({articles, files}) {
 
   const { data:pokemon, error } = useSWR('https://pokeapi.co/api/v2/pokemon/ditto', fetcher)
 
-  console.log(pokemon.species.name)
+  // console.log(pokemon.species.name)
   //
 
   const test = async () => {

@@ -1,6 +1,40 @@
+@import "mixins";
+
 /* variables.module.scss */
-$primary-color: #64FF00;
+$primary-color: #a11717;
 
 :export {
   primaryColor: $primary-color
 }
+
+.container {
+
+  .header {
+    color: $primary-color;
+    @include desktop() {
+      color: chartreuse;
+    }
+  }
+
+  p {
+    color: $primary-color;
+    
+    span {
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+  button {
+    color: $primary-color;
+  }
+
+}
+
+// @include desktop() {
+//     .container {
+//       .header {
+//         color: green;
+//       }
+//     }
+//   }
